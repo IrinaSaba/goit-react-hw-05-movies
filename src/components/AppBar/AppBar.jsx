@@ -6,7 +6,7 @@ export default function AppBar() {
    return(
       <header>
          <nav>
-            <NavLink  to="/" 
+            <NavLink exact to="/" 
             className={s.navLinks} 
             activeClassName={s.navActiveLink} >Home</NavLink>
 
