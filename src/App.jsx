@@ -16,7 +16,7 @@ return (
       <Route exact path='/'>
          <HomePage/>
       </Route>
-         <Route path='/movies/:movieId'>
+      <Route path='/movies/:movieId'>
         <MovieDetailsPage/>
       </Route>
       <Route path='/movies'>

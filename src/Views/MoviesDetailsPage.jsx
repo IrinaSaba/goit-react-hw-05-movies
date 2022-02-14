@@ -51,7 +51,7 @@ export default function MoviesDetailsPage() {
          </div>
          <hr></hr>
          <Route path="/movies/:movieId/cast">
-               <Cast />
+            <Cast />
          </Route>
       </>
    )
