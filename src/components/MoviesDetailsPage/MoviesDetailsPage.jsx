@@ -2,19 +2,20 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { Route } from "react-router-dom"
 import { useParams } from 'react-router-dom';
-import Cast from '../components/Cast/Cast'
-import Reviews from '../components/Reviews/Reviews'
-import * as getSearchApi from '../data/GetSearchApi'
+import Cast from '../Cast/Cast'
+import Reviews from '../Reviews/Reviews'
+import * as getSearchApi from '../../data/GetSearchApi'
 
 
 export default function MoviesDetailsPage() {
    const {movieId} = useParams()
+
    // console.log(movieId)
 
    const [movieDetail, setMovieDetail] = useState([]);
 
    useEffect(() => {
-      getSearchApi.getMovieId(movieId).then((setMovieDetail));
+      movieDetail && getSearchApi.getMovieId(movieId).then((setMovieDetail));
    },[]); 
 
    // console.log(movieDetail)
@@ -45,13 +46,16 @@ export default function MoviesDetailsPage() {
                   <Link to={`/movies/${movieId}/cast`}>Cast</Link>  
                </li>
                <li>
-                  {/* <Link to=''><Reviews /></Link>   */}
+                  <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>  
                </li>
             </ul>
          </div>
          <hr></hr>
          <Route path="/movies/:movieId/cast">
             <Cast />
+         </Route>
+         <Route path="/movies/:movieId/reviews">
+            <Reviews />
          </Route>
       </>
    )

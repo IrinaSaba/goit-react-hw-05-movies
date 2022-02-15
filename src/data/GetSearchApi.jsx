@@ -39,3 +39,15 @@ export const getMovieIdCast = (movie_id) => {
       throw err;
     });
 };
+export const getMovieIdReview = (movie_id, page = 1) => {
+  axios.defaults.params = {
+   api_key: "f02791c07431f6e71112b21384bb0659",
+   page
+  };
+  return axios
+    .get(`/movie/${movie_id}/reviews`)
+    .then(({ data }) => data)
+    .catch((err) => {
+      throw err;
+    });
+};

@@ -2,7 +2,7 @@ import AppBar from "components/AppBar/AppBar"
 import { Route, Switch } from "react-router-dom"
 import HomePage from "./Views/HomePage"
 import MoviesPages from "./Views/MoviesPages"
-import MovieDetailsPage from './Views/MoviesDetailsPage'
+import MovieDetailsPage from './components/MoviesDetailsPage/MoviesDetailsPage'
 import NotFound from './Views/NotFound'
 
 

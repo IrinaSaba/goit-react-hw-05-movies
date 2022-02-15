@@ -9,11 +9,11 @@ export default function Cast() {
 
 useEffect(() => {
    getSearchApi.getMovieIdCast(movieId).then((setCastList));
-},[]);
+},[movieId]);
 // console.log(castList)
    return(
           <ul>
-            {castList && castList.map(cast => (
+            {castList?.map(cast => (
                <li key={cast.cast_id}>
               {cast.profile_path && <img style={{width: "100px"}}
                   src={`https://image.tmdb.org/t/p/w300/${cast.profile_path}`}
