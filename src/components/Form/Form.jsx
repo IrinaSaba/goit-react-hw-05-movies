@@ -11,7 +11,7 @@ export default function Form({setSearch}) {
     const handleSubmit = (e) => {
       e.preventDefault();
       if(input.trim() === '') {
-        alert(' SERGEY we do not have any porno, sorry')
+        alert(' SERGEY we do not have any porno :)')
         return;
       }
       setSearch(input);

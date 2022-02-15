@@ -4,6 +4,7 @@ import Form  from '../components/Form/Form';
 import { useState, useEffect } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import qs from "query-string";
+import s from '../components/Error/error.module.css'
 
 
 export default function MoviesPages() {
@@ -15,25 +16,24 @@ export default function MoviesPages() {
   const { query } = search;
 
   const [movieByInput, setMovieByInput] = useState([]);
+  const [error, setError] = useState(null);
 
   const setSearch = (input) => {
    history.push({ pathname: "/movies", search: "?query=" + input }); // {pathname: ""/gallery, search: "?query=cat", hash: "#eruyiu", state: undefined}
  };
   
  useEffect(() => {
-   query && getSearchApi.getMovieByInput(query).then((setMovieByInput));
-   setSearch('')
+   query && getSearchApi.getMovieByInput(query).then((setMovieByInput))
+   .catch((error) => setError(error.message))
  }, [query]);
 
  console.log(movieByInput);
 
-//  if(movieByInput && movieByInput.length === 0)
-//    return alert ('SERGEY we do not have any porno, sorry')
-
    return (
       <>
          <Form setSearch={setSearch}/>
-         <ul>
+         {!error ? (
+        <ul>
             {movieByInput &&  
             movieByInput.map(movie => (
                <li key={movie.id} style={{margin: "10px", fontSize:"15px"}}>
@@ -41,6 +41,10 @@ export default function MoviesPages() {
                </li>))
             }
          </ul>
+      ) : (
+         <p className={s["error"]}>{error}</p>
+      )}
+         
       </>
    )
 }

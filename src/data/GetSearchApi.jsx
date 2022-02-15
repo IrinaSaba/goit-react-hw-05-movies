@@ -59,7 +59,14 @@ export const getMovieByInput = (query, page = 1) => {
   };
   return axios
     .get(`/search/movie`)
-    .then(({ data }) => data.results)
+    .then(({ data }) => {
+      
+      if (!data.results.length) {
+      throw new Error("Sergej, porno?! Are you 18 already?");
+    }
+   
+    return data.results
+  })
     .catch((err) => {
       throw err;
     });

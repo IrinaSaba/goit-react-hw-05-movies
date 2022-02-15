@@ -29,7 +29,6 @@
   max-width: 600px;
   background-color: #fff;
   border-radius: 3px;
-  overflow: hidden;
   padding: 15px;
 }
 
@@ -45,10 +44,6 @@
   font-size: 15px;
 }
 
-.SearchForm-button:hover {
-  opacity: 1;
-}
-
 .SearchForm-input {
   display: inline-block;
   padding: 5px;
@@ -58,11 +53,4 @@
   color: purple;
   border: solid 2px purple;
   outline: none;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-.SearchForm-input::placeholder {
-  font: inherit;
-  font-size: 18px;
 }
