@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react'
+import { lazy, Suspense } from "react"
 import { Link } from 'react-router-dom';
-import { Route } from "react-router-dom"
+import { Route, useRouteMatch } from "react-router-dom"
 import { useParams } from 'react-router-dom';
-import Cast from '../Cast/Cast'
-import Reviews from '../Reviews/Reviews'
 import * as getSearchApi from '../../data/GetSearchApi'
 
+const Cast = lazy(()=> import("../Cast/Cast"))  
+const Reviews = lazy(()=> import("../Reviews/Reviews"))  
 
 export default function MoviesDetailsPage() {
-   const {movieId} = useParams()
+   // const {url, path }= useRouteMatch;
+   const {movieId} = useParams();
 
    // console.log(movieId)
 
@@ -51,12 +53,14 @@ export default function MoviesDetailsPage() {
             </ul>
          </div>
          <hr></hr>
-         <Route path="/movies/:movieId/cast">
-            <Cast />
-         </Route>
-         <Route path="/movies/:movieId/reviews">
-            <Reviews />
-         </Route>
+         <Suspense fallback={<h1>Wait a second, look at the sky during waiting...</h1>}>
+            <Route path={`/movies/:movieId/cast`}>
+               <Cast />
+            </Route>
+            <Route path={`/movies/:movieId/reviews`}>
+               <Reviews />
+            </Route>
+         </Suspense>
       </>
    )
 }

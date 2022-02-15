@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/643.7327cc20.chunk.js","mappings":"iMAAe,SAASA,IACrB,OAAO","sources":["Views/NotFound.jsx"],"sourcesContent":["export default function NotFound() {\r\n   return <h1>Bad request</h1>\r\n}"],"names":["NotFound"],"sourceRoot":""}

@@ -51,3 +51,16 @@ export const getMovieIdReview = (movie_id, page = 1) => {
       throw err;
     });
 };
+export const getMovieByInput = (query, page = 1) => {
+  axios.defaults.params = {
+   api_key: "f02791c07431f6e71112b21384bb0659",
+   query,
+   page
+  };
+  return axios
+    .get(`/search/movie`)
+    .then(({ data }) => data.results)
+    .catch((err) => {
+      throw err;
+    });
+};
