@@ -1,4 +1,3 @@
-// import MoviesList  from '../components/MoviesDetailsPage/MoviesDetailsPage';
 import * as getSearchApi from '../data/GetSearchApi'
 import Form  from '../components/Form/Form';
 import { useState, useEffect } from 'react';
@@ -25,9 +24,10 @@ export default function MoviesPages() {
  useEffect(() => {
    query && getSearchApi.getMovieByInput(query).then((setMovieByInput))
    .catch((error) => setError(error.message))
+   setError('')
  }, [query]);
 
- console.log(movieByInput);
+//  console.log(movieByInput);
 
    return (
       <>
@@ -37,7 +37,10 @@ export default function MoviesPages() {
             {movieByInput &&  
             movieByInput.map(movie => (
                <li key={movie.id} style={{margin: "10px", fontSize:"15px"}}>
-                  <Link to={`movies/${movie.id}`}>{movie.original_title}</Link>  
+                  <Link to={{
+              pathname: `movies/${movie.id}`,
+              state: { from: location},
+            }}>{movie.original_title}</Link>  
                </li>))
             }
          </ul>

@@ -62,7 +62,7 @@ export const getMovieByInput = (query, page = 1) => {
     .then(({ data }) => {
       
       if (!data.results.length) {
-      throw new Error("Sergej, porno?! Are you 18 already?");
+      throw new Error("Porno?! Really?! Sergey are You 18 already?");
     }
    
     return data.results
